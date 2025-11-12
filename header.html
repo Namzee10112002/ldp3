@@ -1,0 +1,255 @@
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(90deg,#266abe,#2a1a4b);">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/" data-link>
+        <div><a href="index.html?page=home" data-link><img width="100px" src="images/logo-removebg-preview.png"
+              alt=""></a></div>
+        <div class="ms-2">
+          <div style="font-weight:700;color:#fff;">Glow Gifts</div>
+          <small class="text-light">Thắp sáng khoảnh khắc – Kiến tạo thành công</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link text-light" href="index.html?page=home" data-link>Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="index.html?page=about" data-link>Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="index.html?page=services" data-link>Dịch vụ</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="index.html?page=gallery" data-link>Hình ảnh</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="index.html?page=contact" data-link>Liên hệ</a></li>
+        </ul>
+        <div class="d-flex ms-3">
+          <a href="index.html?page=contact" class="btn btn-warning btn-contact" data-link>Liên hệ ngay</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Container */
+  .phone-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  /* The circular button */
+  .phone-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00b894, #0984e3);
+    box-shadow: 0 6px 18px rgba(3, 10, 27, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transform-origin: center;
+    transition: transform .15s ease, box-shadow .15s ease;
+    border: none;
+    outline: none;
+  }
+
+  .phone-btn:active { transform: scale(.96); }
+  .phone-btn:focus { box-shadow: 0 0 0 4px rgba(3, 132, 252, 0.18); }
+
+  /* pulsing ring */
+  .phone-pulse {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0); /* transparent center */
+    pointer-events: none;
+    box-shadow: 0 0 0 0 rgba(3, 132, 252, 0.25);
+    animation: pulseRing 1.8s infinite;
+  }
+
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(3, 132, 252, 0.24); transform: scale(1); opacity: 1; }
+    70% { box-shadow: 0 0 0 18px rgba(3, 132, 252, 0.06); transform: scale(1.06); opacity: .6; }
+    100% { box-shadow: 0 0 0 26px rgba(3, 132, 252, 0); transform: scale(1.08); opacity: 0; }
+  }
+
+  /* small phone icon inside button (SVG) */
+  .phone-svg { width: 22px; height: 22px; display: block; }
+
+  /* Tooltip / small modal shown on desktop */
+  .phone-tooltip {
+    min-width: 220px;
+    max-width: 320px;
+    background: #ffffff;
+    color: #0b1b2b;
+    border-radius: 10px;
+    box-shadow: 0 8px 26px rgba(11,27,43,0.16);
+    padding: 12px 12px;
+    font-size: 14px;
+    line-height: 1.2;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .phone-tooltip.show { display: flex; }
+
+  .phone-number {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: .2px;
+  }
+
+  .phone-actions { display:flex; gap:8px; }
+  .btn-small {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0984e3;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid #e6eefc;
+    color: #0b1b2b;
+  }
+
+  /* responsive: make a bit smaller on tiny screens */
+  @media (max-width:420px) {
+    .phone-btn { width: 48px; height: 48px; }
+    .phone-pulse { width: 48px; height: 48px; }
+  }
+</style>
+
+<div class="phone-float" id="phoneFloat" aria-hidden="false">
+  <!-- tooltip / info shown for desktop -->
+  <div class="phone-tooltip" id="phoneTooltip" role="dialog" aria-modal="false" aria-label="Số điện thoại">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3.09 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.77 3.02a2 2 0 0 1-.45 2.11L9.91 9.91a15.05 15.05 0 0 0 6 6l1.06-1.06a2 2 0 0 1 2.11-.45c.95.39 1.97.65 3.02.77A2 2 0 0 1 22 16.92z" fill="#0984e3"/>
+        </svg>
+        <div>
+          <div style="font-size:12px;color:#546a7b;">Gọi tới</div>
+          <div class="phone-number" id="phoneNumberDisplay">+84123456789</div>
+        </div>
+      </div>
+      <button id="closeTooltip" title="Đóng" style="background:transparent;border:none;cursor:pointer;font-size:18px;color:#6b7280;">✕</button>
+    </div>
+
+    <div style="font-size:13px;color:#475569">Nhấn "Gọi" nếu muốn mở ứng dụng gọi (nếu hỗ trợ). Hoặc sao chép số để gọi thủ công.</div>
+
+    <div class="phone-actions">
+      <a id="callLink" class="btn-small" href="tel:+84123456789">Gọi</a>
+      <button id="copyBtn" class="btn-small btn-ghost" type="button">Sao chép</button>
+    </div>
+  </div>
+
+  <!-- the circular clickable phone button -->
+  <a id="phoneBtn" class="phone-btn" href="tel:+84123456789" aria-label="Gọi điện" title="Gọi ngay">
+    <span class="phone-pulse" aria-hidden="true"></span>
+    <!-- phone SVG icon -->
+    <svg class="phone-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.72 11.72 0 003.7.6 1 1 0 011 1v3.59a1 1 0 01-1 1A19 19 0 015 4a1 1 0 011-1h3.59a1 1 0 011 1 11.72 11.72 0 00.6 3.7 1 1 0 01-.24 1.02l-2.33 2.07z" fill="#fff"/>
+    </svg>
+  </a>
+</div>
+
+
+
+<script>
+(function () {
+  // === CONFIG: Thay số điện thoại ở đây (định dạng quốc tế tốt nhất) ===
+  const PHONE = '+84935160891'; // <-- thay thành số của bạn
+
+  // Elements
+  const phoneBtn = document.getElementById('phoneBtn');
+  const phoneTooltip = document.getElementById('phoneTooltip');
+  const phoneNumberDisplay = document.getElementById('phoneNumberDisplay');
+  const callLink = document.getElementById('callLink');
+  const copyBtn = document.getElementById('copyBtn');
+  const closeTooltip = document.getElementById('closeTooltip');
+
+  // Apply phone number
+  phoneBtn.href = 'tel:' + PHONE;
+  callLink.href = 'tel:' + PHONE;
+  phoneNumberDisplay.textContent = PHONE;
+
+  // Basic device detection: mobile if touch-capable or has maxTouchPoints
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+
+  // If desktop: intercept click to open tooltip instead of trying to call
+  phoneBtn.addEventListener('click', function (e) {
+    if (!isTouch) {
+      // desktop: show tooltip/modal
+      e.preventDefault();
+      phoneTooltip.classList.toggle('show');
+      // focus first actionable element for keyboard users
+      if (phoneTooltip.classList.contains('show')) {
+        callLink.focus();
+      } else {
+        phoneBtn.focus();
+      }
+    } else {
+      // mobile: allow default tel: behavior (opens dialer)
+      // no-op
+    }
+  });
+
+  // Copy to clipboard
+  copyBtn.addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(PHONE).then(function () {
+        copyBtn.textContent = 'Đã sao chép ✓';
+        setTimeout(() => copyBtn.textContent = 'Sao chép', 1500);
+      }).catch(fallbackCopy);
+    } else fallbackCopy();
+  });
+
+  function fallbackCopy() {
+    // fallback: create temporary textarea
+    const ta = document.createElement('textarea');
+    ta.value = PHONE;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      copyBtn.textContent = 'Đã sao chép ✓';
+      setTimeout(() => copyBtn.textContent = 'Sao chép', 1500);
+    } catch (err) {
+      alert('Không thể sao chép tự động — vui lòng sao chép thủ công: ' + PHONE);
+    }
+    document.body.removeChild(ta);
+  }
+
+  // Close tooltip
+  closeTooltip.addEventListener('click', function () {
+    phoneTooltip.classList.remove('show');
+  });
+
+  // Close tooltip when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!phoneTooltip.contains(e.target) && !phoneBtn.contains(e.target)) {
+      phoneTooltip.classList.remove('show');
+    }
+  });
+
+  // Accessibility: close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') phoneTooltip.classList.remove('show');
+  });
+
+})();
+</script>

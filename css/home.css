@@ -1,0 +1,128 @@
+/* Section Giới thiệu công ty */
+.section-home {
+    background: #f8f9fa; /* light gray */
+    padding: 80px 0;
+}
+
+.section-home .card-home {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-home .card-home:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.18);
+}
+
+.section-home .card-home img {
+    width: 100%;
+    height: auto;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: transform 0.35s ease;
+}
+
+.section-home .card-home img:hover {
+    transform: scale(1.05);
+}
+
+.section-home h2.section-title {
+    color: #266abe;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.section-home ul li {
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.section-home .btn-contact-home {
+    background: linear-gradient(90deg,#266abe,#2a1a4b);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-home .btn-contact-home:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(38,106,190,0.4);
+}
+
+/* ===== Featured Gallery ===== */
+.featured-gallery {
+  overflow: hidden;
+}
+
+.gallery-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* Ảnh dọc bên trái */
+.gallery-item.vertical {
+  height: 100%;
+}
+
+.gallery-item.vertical img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 3 / 4;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Cột bên phải gồm 2 hàng, mỗi hàng 2 ảnh ngang */
+.gallery-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.gallery-item.horizontal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.gallery-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-right {
+    flex-direction: column;
+  }
+
+  .gallery-row {
+    flex-direction: column;
+  }
+
+  .gallery-item img {
+    aspect-ratio: auto;
+  }
+}

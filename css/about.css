@@ -1,0 +1,50 @@
+/* ===== ABOUT US SECTION ===== */
+.about-us-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* .about-image img {
+  border-radius: 16px;
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+} */
+
+.about-content {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 6px solid #007bff;
+}
+
+.about-content h2 {
+  letter-spacing: 0.5px;
+}
+
+.core-values li {
+  list-style: none;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.core-values li::before {
+  content: "★";
+  color: #ffc107;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .about-content {
+    border-left: none;
+    border-top: 4px solid #007bff;
+  }
+}
